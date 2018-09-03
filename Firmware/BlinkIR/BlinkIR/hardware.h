@@ -25,7 +25,7 @@
  * perform serial communications. It supports speeds of up to 250Kbps, can be
  * configured to use a single IO pin and has an option to be interrupt driven.
  */
-#define UART_ENABLED
+//#define UART_ENABLED
 
 /** System Ticks
  *
@@ -76,7 +76,7 @@
  * Only available in interrupt driven mode. This sets the size of the receive
  * buffer (max 256 bytes).
  */
-#define UART_BUFFER 4
+#define UART_BUFFER 2
 
 //---------------------------------------------------------------------------
 // Software PWM configuration

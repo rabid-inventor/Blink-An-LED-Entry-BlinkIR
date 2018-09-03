@@ -37,8 +37,16 @@ void uartInit() {
   PORTB |= (1 << UART_TX);
 #  ifdef UART_INTERRUPT
   // Enable pin change interrupts
+  /*
   PCMSK |= (1 << UART_RX);
-  GIMSK |= (1 << PCIE);
+  GIMSK |= (1 << PCIE); */
+    // Interrupt-Section:
+    
+    EICRA = 0x00;    // Low-Level generates an interrupt
+    EIMSK = 0x01;    // External Interrupt Request 0 Enable
+    PCICR = 0x01;    // Pin Change Interrupt Control Register set to enable PCINT Interrupt
+    PCMSK = 0x01;    // Pin Change Mask Register set to enable PCINT0
+  
 #  endif /* UART_INTERRUPT */
 #endif /* UART_TWOPIN */
   }
