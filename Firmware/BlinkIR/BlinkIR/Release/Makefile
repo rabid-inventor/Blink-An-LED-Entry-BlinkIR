@@ -40,12 +40,7 @@ SUBDIRS :=  \
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c \
-../uart_format.c \
-../uart_print.c \
-../uart_recv.c \
-../uart_send.c \
-../utility.c
+../main.c
 
 
 PREPROCESSING_SRCS += 
@@ -55,36 +50,16 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o \
-uart_format.o \
-uart_print.o \
-uart_recv.o \
-uart_send.o \
-utility.o
+main.o
 
 OBJS_AS_ARGS +=  \
-main.o \
-uart_format.o \
-uart_print.o \
-uart_recv.o \
-uart_send.o \
-utility.o
+main.o
 
 C_DEPS +=  \
-main.d \
-uart_format.d \
-uart_print.d \
-uart_recv.d \
-uart_send.d \
-utility.d
+main.d
 
 C_DEPS_AS_ARGS +=  \
-main.d \
-uart_format.d \
-uart_print.d \
-uart_recv.d \
-uart_send.d \
-utility.d
+main.d
 
 OUTPUT_FILE_PATH +=BlinkIR.elf
 
@@ -100,25 +75,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
-
-
-
-
-
-
-
-
-
-
-
-
-
-./%.o: .././%.c
+./main.o: .././main.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DNDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\include"  -Os -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -Wall -mmcu=attiny10 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATtiny_DFP\1.2.118\gcc\dev\attiny10" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
 	@echo Finished building: $<
 	
+
 
 
 
