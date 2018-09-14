@@ -9,8 +9,8 @@
 #define BLINK_DELAY 500
 
 #define BLINK_PIN 2
-#define IR_SEND_PIN 0
-#define IR_RECEIVE_PIN 1
+#define IR_SEND_PIN 1
+#define IR_RECEIVE_PIN 0
 #define RAND_MAX  0xFF
 
 #include <stdlib.h>
@@ -45,12 +45,13 @@ char pool_ir_input(){
 
 void blink(){
 		PORTB |= _BV(BLINK_PIN);
-		PORTB |= _BV(IR_SEND_PIN);
+		PORTB &= ~(_BV(IR_SEND_PIN));
+		
 		
 		_delay_ms(BLINK_DELAY);
-		
+		PORTB |= _BV(IR_SEND_PIN);
 		PORTB &= ~(_BV(BLINK_PIN));
-		PORTB &= ~(_BV(IR_SEND_PIN));
+		
 		
 		_delay_ms(BLINK_DELAY);
 	
